@@ -1,6 +1,6 @@
 {
   "name": "antd-mobile",
-  "version": "2.0.0-rc.2",
+  "version": "2.0.0-rc.3",
   "description": "基于 React 的移动设计规范实现",
   "homepage": "http://mobile.ant.design",
   "keywords": [
@@ -55,7 +55,7 @@
     "rmc-list-view": "^0.11.0",
     "rmc-nuka-carousel": "~3.0.0",
     "rmc-picker": "~5.0.0",
-    "rmc-pull-to-refresh": "~1.0.0-alpha.5",
+    "rmc-pull-to-refresh": "~1.0.1",
     "rmc-steps": "~1.0.0",
     "rmc-tabs": "~1.2.0",
     "rmc-tooltip": "~1.0.0",
@@ -68,9 +68,9 @@
     "@types/react-native": "^0.47.2",
     "antd": "2.x",
     "antd-mobile-demo-data": "^0.1.1",
-    "antd-tools": "^2.0.0",
+    "antd-tools": "^4.0.1",
     "babel-eslint": "^7.2.3",
-    "babel-plugin-import": "^1.2.1",
+    "babel-plugin-import": "1.6.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-react-native": "^1.0.0",
     "bisheng": "^0.26.0",

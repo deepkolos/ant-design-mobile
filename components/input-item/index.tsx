@@ -56,6 +56,7 @@ class InputItem extends React.Component<InputItemProps, any> {
     super(props);
     this.state = {
       placeholder: props.placeholder,
+      value: props.value || props.defaultValue || '',
     };
   }
 
@@ -63,6 +64,11 @@ class InputItem extends React.Component<InputItemProps, any> {
     if ('placeholder' in nextProps && !nextProps.updatePlaceholder) {
       this.setState({
         placeholder: nextProps.placeholder,
+      });
+    }
+    if ('value' in nextProps) {
+      this.setState({
+        value: nextProps.value,
       });
     }
   }
@@ -105,6 +111,9 @@ class InputItem extends React.Component<InputItemProps, any> {
       default:
         break;
     }
+    if (!('value' in this.props)) {
+      this.setState({ value });
+    }
     if (onChange) {
       onChange(value);
     }
@@ -132,9 +141,11 @@ class InputItem extends React.Component<InputItemProps, any> {
 
   onInputBlur = (value) => {
     this.debounceTimeout = setTimeout(() => {
-      this.setState({
-        focus: false,
-      });
+      if (document.activeElement !== this.inputRef.inputRef) {
+        this.setState({
+          focus: false,
+        });
+      }
     }, 200);
     if (this.props.onBlur) {
       this.props.onBlur(value);
@@ -159,6 +170,9 @@ class InputItem extends React.Component<InputItemProps, any> {
         placeholder: this.props.value,
       });
     }
+    this.setState({
+      value: '',
+    });
     if (this.props.onChange) {
       this.props.onChange('');
     }
@@ -174,7 +188,8 @@ class InputItem extends React.Component<InputItemProps, any> {
       clear, children, error, className, extra, labelNumber, onExtraClick, onErrorClick,
       updatePlaceholder, type, locale, moneyKeyboardAlign, ...restProps,
     } = this.props;
-    const { value, defaultValue, name, disabled, maxLength } = restProps;
+    const { defaultValue, name, disabled, maxLength } = restProps;
+    const { value } = this.state;
 
     const _locale = getComponentLocale(this.props, this.context, 'InputItem', () => require('./locale/zh_CN'));
 
@@ -217,17 +232,6 @@ class InputItem extends React.Component<InputItemProps, any> {
       inputType = type;
     }
 
-    let valueProps;
-    if ('value' in this.props) {
-      valueProps = {
-        value: fixControlledValue(value),
-      };
-    } else {
-      valueProps = {
-        defaultValue,
-      };
-    }
-
     let patternProps;
     if (type === 'number') {
       patternProps = {
@@ -249,6 +253,8 @@ class InputItem extends React.Component<InputItemProps, any> {
           <div className={controlCls}>
             {type === 'money' ? (
               <CustomInput
+                value={fixControlledValue(value)}
+                defaultValue={defaultValue}
                 type={type}
                 ref={el => this.inputRef = el}
                 maxLength={maxLength}
@@ -258,7 +264,6 @@ class InputItem extends React.Component<InputItemProps, any> {
                 onBlur={this.onInputBlur}
                 disabled={disabled}
                 editable={editable}
-                value={fixControlledValue(value)}
                 prefixCls={prefixCls}
                 style={style}
                 confirmLabel={confirmLabel}
@@ -268,8 +273,9 @@ class InputItem extends React.Component<InputItemProps, any> {
                 <Input
                   {...patternProps}
                   {...restProps}
-                  {...valueProps}
                   {...classNameProps}
+                  value={fixControlledValue(value)}
+                  defaultValue={defaultValue}
                   ref={el => this.inputRef = el}
                   style={style}
                   type={inputType}
@@ -284,7 +290,7 @@ class InputItem extends React.Component<InputItemProps, any> {
                 />
               )}
           </div>
-          {clear && editable && !disabled && (value && value.length > 0) ?
+          {clear && editable && !disabled && (value && `${value}`.length > 0) ?
             <TouchFeedback activeClassName={`${prefixCls}-clear-active`}>
               <div className={`${prefixCls}-clear`} onClick={this.clearInput} />
             </TouchFeedback>

@@ -30,6 +30,7 @@ toc: false
   - Add `DatePickerView` ([#1232](https://github.com/ant-design/ant-design-mobile/issues/1232))
   - Add `Calendar` ([#1610](https://github.com/ant-design/ant-design-mobile/issues/1610))
   - [Web] locale support for `Picker` `SearchBar`
+  - [Web/RN] `NoticeBar` can use `action` prop to customize action text. ([#1959](https://github.com/ant-design/ant-design-mobile/issues/1959))
 
 - **Break Change**
 
@@ -39,7 +40,7 @@ toc: false
   - [Web/RN] all component's `ref` switch from `string` to `function` ([#1354](https://github.com/ant-design/ant-design-mobile/issues/1354))
   - [Web/RN] Rewrite `Tabs`，**Redesigned all api**
   - [Web/RN] Remove `Popup`，Add `popup` api for `Modal`,  Modal `animationType` support web, to custom popup animation style [#1125](https://github.com/ant-design/ant-design-mobile/issues/1125)
-  - [Web/RN] `InputItem` / `TextareaItem`
+  - [Web/RN] `InputItem` / `TextareaItem` / `SearchBar`
       - pass `style` to input(web) / TextInput(rn)
       - remove `focused` / `autoFocus`  (use `focus()` instance method)
   - [Web/RN] `DatePicker` remove moment.js

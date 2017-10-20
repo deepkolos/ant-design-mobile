@@ -36,18 +36,15 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
     this.state = {
       value,
       focus: false,
-      focused: props.focused || false,
     };
   }
 
   componentDidMount() {
     const initBtn = window.getComputedStyle(this.rightBtnRef);
     this.rightBtnInitMarginleft = initBtn['margin-left'];
-    if ((this.props.autoFocus || this.state.focused) && navigator.userAgent.indexOf('AlipayClient') > 0) {
-      this.inputRef.focus();
-    }
     this.componentDidUpdate();
   }
+
   componentDidUpdate() {
     // 检测是否包含名为 ${this.props.prefixCls}-start 样式，生成动画
     // offsetWidth 某些时候是向上取整，某些时候是向下取整，不能用
@@ -64,20 +61,12 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
           `-${this.rightBtnRef.offsetWidth + parseInt(this.rightBtnInitMarginleft, 10)}px`;
       }
     }
-    if (this.state.focused) {
-      this.inputRef.focus();
-    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if ('value' in nextProps) {
+    if ('value' in nextProps && nextProps.value !== this.state.value) {
       this.setState({
         value: nextProps.value,
-      });
-    }
-    if ('focused' in nextProps) {
-      this.setState({
-        focused: nextProps.focused,
       });
     }
   }
@@ -122,12 +111,6 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
     });
     this.firstFocus = true;
 
-    if (!('focused' in this.props)) {
-      this.setState({
-        focused: true,
-      });
-    }
-
     if (this.props.onFocus) {
       this.props.onFocus();
     }
@@ -144,17 +127,14 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
   onBlur = () => {
     this.onBlurTimeout = setTimeout(() => {
       if (!this.blurFromOnClear) {
-        this.setState({
-          focus: false,
-        });
+        if (document.activeElement !== this.inputRef) {
+          this.setState({
+            focus: false,
+          });
+        }
       }
       this.blurFromOnClear = false;
     }, 50);
-    if (!('focused' in this.props)) {
-      this.setState({
-        focused: false,
-      });
-    }
     if (this.props.onBlur) {
       this.props.onBlur();
     }
@@ -175,7 +155,6 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
       this.props.onChange('');
     }
     if (blurFromOnClear) {
-      this.inputRef.focus();
     }
   }
 
@@ -186,7 +165,9 @@ export default class SearchBar extends React.Component<SearchBarProps, SearchBar
       this.doClear(false);
     }
   }
-
+  focus = () => {
+    this.inputRef.focus();
+  }
   render() {
     const {
       prefixCls, showCancelButton, disabled, placeholder, className, style, maxLength,

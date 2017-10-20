@@ -10,6 +10,8 @@ export interface ModalProps extends BasePropsType {
   maskTransitionName?: string;
   className?: string;
   wrapClassName?: string;
+  wrapProps?: {};
+  platform?: string;
 }
 
 export default class Modal extends ModalComponent<ModalProps, any> {
@@ -26,26 +28,6 @@ export default class Modal extends ModalComponent<ModalProps, any> {
     operation: false,
     platform: 'ios',
   };
-
-  isInModal(e) {
-    if (!/\biPhone\b|\biPod\b/i.test(navigator.userAgent)) {
-      return;
-    }
-    // fix touch to scroll background page on iOS
-    const prefixCls = this.props.prefixCls;
-    const pNode = (node => {
-      while (node.parentNode && node.parentNode !== document.body) {
-        if (node.classList.contains(prefixCls)) {
-          return node;
-        }
-        node = node.parentNode;
-      }
-    })(e.target);
-    if (!pNode) {
-      e.preventDefault();
-    }
-    return true;
-  }
 
   renderFooterButton(button, prefixCls, i) {
     let buttonStyle = {};
@@ -130,7 +112,6 @@ export default class Modal extends ModalComponent<ModalProps, any> {
         maskTransitionName={maskTransitionName || maskTransName}
         style={style}
         footer={footerDom}
-        wrapProps={{ onTouchStart: e => this.isInModal(e) }}
       />
     );
   }
