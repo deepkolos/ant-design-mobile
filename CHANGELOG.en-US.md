@@ -15,9 +15,102 @@ toc: false
 * Major version release is not included in this schedule for breadking change and new features.
 
 ---
+
+### 2.1.1
+
+`2017-12-06`
+
+- **Bug Fix**
+
+  - 🐞  Fix `List` padding incrase in rem style page. ([#2145](https://github.com/ant-design/ant-design-mobile/pull/2145))
+  - 🐞  Fix `body.fontSize` to `@font-sizep-base` 14px。 ([8973a0f](https://github.com/ant-design/ant-design-mobile/commit/8973a0f890e776a47743188b14356bee34b68ad6))
+  - 🐞  Fix `Button` do not show until scroll in iOS 11. ([6b571bef](https://github.com/ant-design/ant-design-mobile/commit/6b571bef0d714e8fdb7c4434ee1ab280be9952fd))
+
+### 2.1.0
+
+`2017-12-03`
+
+- **Feature**
+
+  - 🌟 `Steps` [React Native] support `horizontal`. ([#2090](https://github.com/ant-design/ant-design-mobile/pull/2090))
+  - 🌟 `ImagePicker` support `multiple`. ([#2017](https://github.com/ant-design/ant-design-mobile/issues/2017))
+  - 🇸🇪  `LocaleProvider` add swedish. ([#2132](https://github.com/ant-design/ant-design-mobile/pull/2132))
+
+- **Bug Fix**
+
+  - 🐞  Fix `[InputItem type="money"]` cover page content. ([#1893](https://github.com/ant-design/ant-design-mobile/issues/1893))
+  - 🐞  Fix `[InputItem type="money"]` multi instance at one page. ([#2065](https://github.com/ant-design/ant-design-mobile/issues/2065))
+  - 🐞  Fix `Menu` props.data null array. ([#2079](https://github.com/ant-design/ant-design-mobile/pull/2079))
+  - 🐞  Fix `Menu` lost Button style. ([#2097](https://github.com/ant-design/ant-design-mobile/issues/2097))
+  - 🐞  Fix `InputItem`, `Drawer` tsd. ([#2100](https://github.com/ant-design/ant-design-mobile/issues/2100), [#2138](https://github.com/ant-design/ant-design-mobile/issues/2138))
+  - 🐞  Fix `Picker` cascader data not accuracy. ([59a66c](https://github.com/ant-design/ant-design-mobile/commit/59a66cfbe0daef8c9f080d0387bc880e54632fe0))
+  - 🐞  Fix `TabBar` animation. ([#2072](https://github.com/ant-design/ant-design-mobile/issues/2072))
+  - 🐞  Fix `Textarea` autoHeight not work when init. ([#2118](https://github.com/ant-design/ant-design-mobile/issues/2118))
+  - 🐞  Fix `Flex` [React Native] no need to add touch feedback when no event handler ([#2095](https://github.com/ant-design/ant-design-mobile/pull/2095))
+  - 🐞  Fix `Toast` can not hide after click. ([#2103](https://github.com/ant-design/ant-design-mobile/issues/2103))
+  - 🐞  Fix `Textarea` clear not work in controlled mode. ([#2131](https://github.com/ant-design/ant-design-mobile/issues/2131))
+  - 🐞  Fix `TabBar` sticky. ([#2136](https://github.com/ant-design/ant-design-mobile/issues/2136))
+
+- **Theme**
+
+  - 🗑  Delete bulit-in `body` font-size style. ([#2106](https://github.com/ant-design/ant-design-mobile/pull/2106))
+  - 🆕 `brand-primary-tap` change to `0e80d2`。 ([#2115](https://github.com/ant-design/ant-design-mobile/pull/2115))
+
+### 2.0.3
+
+`2017-11-11`
+
+- **Bug Fix**
+
+ - Fix: InputItem error with react@16 when unmount；([#2040](https://github.com/ant-design/ant-design-mobile/issues/2040))
+ - Fix: InputItem onBlur cannot be triggered when unmount；
+ - Fix: ListItem RN content center；([#2052](https://github.com/ant-design/ant-design-mobile/issues/2052))
+ - Fix: SwipeAction may not work in iOS8; ([#2063](https://github.com/ant-design/ant-design-mobile/issues/2063))
+ - Fix: Stepper buttons cannot be disable if mininus value is 0；([#2062](https://github.com/ant-design/ant-design-mobile/issues/2062))
+
+- **Feature**
+
+  - Grid RN add `itemStyle` property to customize item style；([#2046](https://github.com/ant-design/ant-design-mobile/pull/2046))
+  - TabBar(web) add `noRenderContent` property to support no render content;
+
+- **Enhancement**
+
+  - 1.x doc `open in codepen` is OK now.；([#2032](https://github.com/ant-design/ant-design-mobile/issues/2032))
+
+### 2.0.2
+
+`2017-11-04`
+
+- **Bug Fix**
+
+  - Fix：`onTouch` event cannot be trigged when components use `List.Item` with rmc-feedback；
+  - Fix: Tabs invalid z-index; ([#2014](https://github.com/ant-design/ant-design-mobile/issues/2014))
+  - Fix: Picker `onOk` cannot be triggerd correctly; ([#2042](https://github.com/ant-design/ant-design-mobile/issues/2042))
+
+- **Enhancement**
+
+  - RN stepper numberic keyboard type by default；
+
+### 2.0.1
+
+`2017-10-28`
+
+- **Bug Fix**
+
+  - Fix `Modal` button event is triggered more than once in android. ([#1975](https://github.com/ant-design/ant-design-mobile/issues/1975)).
+  - Fix: `Accordion` crashed under react-native@0.49.  ([#1969](https://github.com/ant-design/ant-design-mobile/pull/1969))
+  - Fix: `Toast` show in componentDidMount and compatibility with react@16. ([#1980](https://github.com/ant-design/ant-design-mobile/issues/1980))
+  - Fix: `Modal.alert/prompt` buttons cannot close Modal in iOS.([#1976](https://github.com/ant-design/ant-design-mobile/issues/1976))
+  - Fix: `Modal` RN button promise.
+  - Fix: `Picker/DatePicker`,the `okText/dismissText/extra` cannot be set； ([#1984](https://github.com/ant-design/ant-design-mobile/issues/1984))
+  - Fix: `Picker` RN i18n；([#2001](https://github.com/ant-design/ant-design-mobile/issues/2001))
+  - Fix: `SearchBar` input content is covered by clear icon；([#2010](https://github.com/ant-design/ant-design-mobile/issues/2010))
+  - Fix: `SearchBar` input cannot be focused when clicked clear icon；
+  - Fix: `TextareaItem` autoHeight crashed under RN@49; ([#1970](https://github.com/ant-design/ant-design-mobile/issues/1970))
+
 ### 2.0.0
 
-`2017-xx-xx`
+`2017-10-20`
 
 - **Feature**
 
@@ -82,6 +175,11 @@ toc: false
   - no need of `webpack.resolve`
   - `rmc-picker` upgrade，dom structure simplify ([#1593](https://github.com/ant-design/ant-design-mobile/issues/1593)）
   - remove global `user-select: none`。[#1793](https://github.com/ant-design/ant-design-mobile/issues/1793)
+
+## 1.7.1
+`2017-10-20`
+
+- Fix `InputItem`/`TextareaItem` clear button is not displayed. ([#1955](https://github.com/ant-design/ant-design-mobile/issues/1955))
 
 ## 1.7.0
 `2017-10-13`

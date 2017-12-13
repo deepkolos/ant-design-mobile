@@ -3,12 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import CustomKeyboard from './CustomKeyboard';
+import Portal from './Portal';
 import { addClass, removeClass } from '../_util/class';
 
 const IS_REACT_16 = !!(ReactDOM as any).createPortal;
+let customNumberKeyboard: any = null;
+let hasPortal = false;
 
 class NumberInput extends React.Component<any, any> {
-
   static defaultProps = {
     onChange: () => { },
     onFocus: () => { },
@@ -47,35 +49,46 @@ class NumberInput extends React.Component<any, any> {
   }
 
   componentDidMount() {
-    if (!IS_REACT_16 && !(window as any).antmCustomKeyboard) {
+    if (!IS_REACT_16 && !customNumberKeyboard) {
       this.renderCustomKeyboard();
     }
   }
+
   addBlurListener = () => {
     document.addEventListener('click', this.doBlur, false);
   }
-  removeBlurListen = () => {
+
+  removeBlurListener = () => {
     document.removeEventListener('click', this.doBlur, false);
   }
+
   componentWillUnmount() {
+    // focus:true unmount 不能触发 blur
+    if (this.state.focus) {
+      this.props.onBlur(this.state.value);
+    }
     this.unLinkInput();
   }
 
   saveRef = (el) => {
     if (IS_REACT_16) {
-      (window as any).antmCustomKeyboard = el;
+      customNumberKeyboard = el;
     }
   }
 
   getComponent() {
     const { keyboardPrefixCls, confirmLabel } = this.props;
-
-    return (<CustomKeyboard
-      ref={this.saveRef}
-      onClick={this.onKeyboardClick}
-      preixCls={keyboardPrefixCls}
-      confirmLabel={confirmLabel}
-    />);
+    if (!hasPortal || !IS_REACT_16) {
+      return (
+        <CustomKeyboard
+          ref={this.saveRef}
+          onClick={this.onKeyboardClick}
+          preixCls={keyboardPrefixCls}
+          confirmLabel={confirmLabel}
+        />
+      );
+    }
+    return null as any;
   }
 
   getContainer() {
@@ -90,13 +103,11 @@ class NumberInput extends React.Component<any, any> {
   }
 
   renderCustomKeyboard() {
-    if (!this.container) {
-      (window as any).antmCustomKeyboard = ReactDOM.unstable_renderSubtreeIntoContainer(
-        this,
-        this.getComponent(),
-        this.getContainer(),
-      );
-    }
+    customNumberKeyboard = ReactDOM.unstable_renderSubtreeIntoContainer(
+      this,
+      this.getComponent(),
+      this.getContainer(),
+    );
   }
 
   doBlur = (ev) => {
@@ -107,12 +118,12 @@ class NumberInput extends React.Component<any, any> {
   }
 
   unLinkInput = () => {
-    const antmCustomKeyboard = (window as any).antmCustomKeyboard;
-    if (antmCustomKeyboard.linkedInput === this) {
-      antmCustomKeyboard.linkedInput = null;
-      addClass(antmCustomKeyboard.antmKeyboard, `${this.props.keyboardPrefixCls}-wrapper-hide`);
-      this.removeBlurListen();
+    if (customNumberKeyboard && customNumberKeyboard.linkedInput && customNumberKeyboard.linkedInput === this) {
+      customNumberKeyboard.linkedInput = null;
+      addClass(customNumberKeyboard.antmKeyboard, `${this.props.keyboardPrefixCls}-wrapper-hide`);
     }
+    // for unmount
+    this.removeBlurListener();
   }
 
   onInputBlur = (value) => {
@@ -134,14 +145,13 @@ class NumberInput extends React.Component<any, any> {
     this.setState({
       focus: true,
     }, () => {
-      const antmCustomKeyboard = (window as any).antmCustomKeyboard;
-      antmCustomKeyboard.linkedInput = this;
-      removeClass(antmCustomKeyboard.antmKeyboard, `${this.props.keyboardPrefixCls}-wrapper-hide`);
-      antmCustomKeyboard.confirmDisabled = (value === '');
+      customNumberKeyboard.linkedInput = this;
+      removeClass(customNumberKeyboard.antmKeyboard, `${this.props.keyboardPrefixCls}-wrapper-hide`);
+      customNumberKeyboard.confirmDisabled = (value === '');
       if (value === '') {
-        addClass(antmCustomKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
+        addClass(customNumberKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
       } else {
-        removeClass(antmCustomKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
+        removeClass(customNumberKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
       }
     });
   }
@@ -175,12 +185,11 @@ class NumberInput extends React.Component<any, any> {
       }
     }
 
-    const antmCustomKeyboard = (window as any).antmCustomKeyboard;
-    antmCustomKeyboard.confirmDisabled = (valueAfterChange === '');
+    customNumberKeyboard.confirmDisabled = (valueAfterChange === '');
     if (valueAfterChange === '') {
-      addClass(antmCustomKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
+      addClass(customNumberKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
     } else {
-      removeClass(antmCustomKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
+      removeClass(customNumberKeyboard.confirmKeyboardItem, `${this.props.keyboardPrefixCls}-item-disabled`);
     }
   }
 
@@ -190,7 +199,7 @@ class NumberInput extends React.Component<any, any> {
 
   focus = () => {
     // this focus may invocked by users page button click, so this click may trigger blurEventListener at the same time
-    this.removeBlurListen();
+    this.removeBlurListener();
     const { focus } = this.state;
     if (!focus) {
       this.onInputFocus();
@@ -198,6 +207,23 @@ class NumberInput extends React.Component<any, any> {
     setTimeout(() => {
       this.addBlurListener();
     }, 50);
+  }
+
+  renderPortal() {
+    if (!IS_REACT_16) {
+      return null;
+    }
+
+    const portal = (
+      <Portal getContainer={() => this.getContainer()}>
+        {this.getComponent()}
+      </Portal>
+    );
+    // make sure one keyboard is been created in react@16
+    // https://github.com/ant-design/ant-design-mobile/issues/2065
+    hasPortal = true;
+
+    return portal;
   }
 
   render() {
@@ -222,7 +248,7 @@ class NumberInput extends React.Component<any, any> {
         >
           {value}
         </div>
-        {IS_REACT_16 && (ReactDOM as any).createPortal(this.getComponent(), this.getContainer())}
+        {this.renderPortal()}
       </div>
     );
   }

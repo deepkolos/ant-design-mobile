@@ -68,7 +68,7 @@ exports[`renders ./components/tabs/demo/basic.md correctly 1`] = `
     </div>
     <div
       class="am-tabs-content-wrap am-tabs-content-wrap-animated"
-      style="touch-action:pan-y;transform:translate3d(-100%, 0px, 0px);-webkit-transform:translate3d(-100%, 0px, 0px);-moz-transform:translate3d(-100%, 0px, 0px)"
+      style="touch-action:pan-x pan-y;transform:translate3d(-100%, 0px, 1px);-webkit-transform:translate3d(-100%, 0px, 1px);-moz-transform:translate3d(-100%, 0px, 1px)"
     >
       <div
         class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive"
@@ -107,7 +107,7 @@ exports[`renders ./components/tabs/demo/basic.md correctly 1`] = `
   >
     <div
       class="am-tabs-content-wrap am-tabs-content-wrap-animated"
-      style="touch-action:pan-y;transform:translate3d(-100%, 0px, 0px);-webkit-transform:translate3d(-100%, 0px, 0px);-moz-transform:translate3d(-100%, 0px, 0px)"
+      style="touch-action:pan-x pan-y;transform:translate3d(-100%, 0px, 1px);-webkit-transform:translate3d(-100%, 0px, 1px);-moz-transform:translate3d(-100%, 0px, 1px)"
     >
       <div
         class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive"
@@ -235,7 +235,7 @@ exports[`renders ./components/tabs/demo/fixedheight.md correctly 1`] = `
       </div>
       <div
         class="am-tabs-content-wrap am-tabs-content-wrap-animated"
-        style="touch-action:pan-y;transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px)"
+        style="touch-action:pan-x pan-y;transform:translate3d(0%, 0px, 1px);-webkit-transform:translate3d(0%, 0px, 1px);-moz-transform:translate3d(0%, 0px, 1px)"
       >
         <div
           class="am-tabs-pane-wrap am-tabs-pane-wrap-active"
@@ -349,7 +349,7 @@ exports[`renders ./components/tabs/demo/mutlitabs.md correctly 1`] = `
     </div>
     <div
       class="am-tabs-content-wrap am-tabs-content-wrap-animated"
-      style="touch-action:pan-y;transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px)"
+      style="touch-action:pan-x pan-y;transform:translate3d(0%, 0px, 1px);-webkit-transform:translate3d(0%, 0px, 1px);-moz-transform:translate3d(0%, 0px, 1px)"
     >
       <div
         class="am-tabs-pane-wrap am-tabs-pane-wrap-active"
@@ -448,7 +448,7 @@ exports[`renders ./components/tabs/demo/noanim.md correctly 1`] = `
     </div>
     <div
       class="am-tabs-content-wrap"
-      style="touch-action:pan-y;transform:translate3d(-200%, 0px, 0px);-webkit-transform:translate3d(-200%, 0px, 0px);-moz-transform:translate3d(-200%, 0px, 0px)"
+      style="touch-action:pan-x pan-y;position:relative;left:-200%"
     >
       <div
         class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive"
@@ -492,12 +492,9 @@ exports[`renders ./components/tabs/demo/sticky.md correctly 1`] = `
         class="am-tabs-tab-bar-wrap"
       >
         <div>
+          <div />
           <div
-            style="padding-bottom:0"
-          />
-          <div
-            class=""
-            style="transform:translateZ(0);z-index:1"
+            style="z-index:1"
           >
             <div
               class="am-tabs-default-bar am-tabs-default-bar-animated am-tabs-default-bar-top"
@@ -536,7 +533,7 @@ exports[`renders ./components/tabs/demo/sticky.md correctly 1`] = `
       </div>
       <div
         class="am-tabs-content-wrap am-tabs-content-wrap-animated"
-        style="touch-action:pan-y;transform:translate3d(0%, 0px, 0px);-webkit-transform:translate3d(0%, 0px, 0px);-moz-transform:translate3d(0%, 0px, 0px)"
+        style="touch-action:pan-x pan-y;transform:translate3d(0%, 0px, 1px);-webkit-transform:translate3d(0%, 0px, 1px);-moz-transform:translate3d(0%, 0px, 1px)"
       >
         <div
           class="am-tabs-pane-wrap am-tabs-pane-wrap-active"
@@ -560,6 +557,85 @@ exports[`renders ./components/tabs/demo/sticky.md correctly 1`] = `
           class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive"
         />
       </div>
+    </div>
+  </div>
+  <div
+    class="am-whitespace am-whitespace-md"
+  />
+</div>
+`;
+
+exports[`renders ./components/tabs/demo/vertical.md correctly 1`] = `
+<div
+  style="height:200px"
+>
+  <div
+    class="am-whitespace am-whitespace-md"
+  />
+  <div
+    class="am-tabs am-tabs-vertical am-tabs-left"
+  >
+    <div
+      class="am-tabs-tab-bar-wrap"
+    >
+      <div
+        class="am-tabs-default-bar am-tabs-default-bar-animated am-tabs-default-bar-left"
+        style="background-color:#fff"
+      >
+        <div
+          class="am-tabs-default-bar-content"
+          style="touch-action:pan-x"
+        >
+          <div
+            class="am-tabs-default-bar-tab am-tabs-default-bar-tab-active"
+            style="height:33.333333333333336%"
+          >
+            1 Tab
+          </div>
+          <div
+            class="am-tabs-default-bar-tab"
+            style="height:33.333333333333336%"
+          >
+            2 Tab
+          </div>
+          <div
+            class="am-tabs-default-bar-tab"
+            style="height:33.333333333333336%"
+          >
+            3 Tab
+          </div>
+          <div
+            class="am-tabs-default-bar-underline"
+            style="height:33.333333333333336%;top:0%"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="am-tabs-content-wrap am-tabs-content-wrap-animated"
+      style="touch-action:pan-x pan-y;transform:translate3d(0px, 0%, 1px);-webkit-transform:translate3d(0px, 0%, 1px);-moz-transform:translate3d(0px, 0%, 1px)"
+    >
+      <div
+        class="am-tabs-pane-wrap am-tabs-pane-wrap-active"
+      >
+        <div
+          style="display:flex;align-items:center;justify-content:center;height:250px;background-color:#fff"
+        >
+          Content of first tab
+        </div>
+      </div>
+      <div
+        class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive"
+      >
+        <div
+          style="display:flex;align-items:center;justify-content:center;height:250px;background-color:#fff"
+        >
+          Content of second tab
+        </div>
+      </div>
+      <div
+        class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive"
+      />
     </div>
   </div>
   <div

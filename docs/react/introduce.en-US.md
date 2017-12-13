@@ -56,12 +56,12 @@ Can be an existing project, or a newly created empty project with [dva](https://
 ### 2. Installation
 
 ```bash
-$ npm install antd-mobile@next --save
+$ npm install antd-mobile --save
 ```
 
 ### 3. Usage
 
-### Web usage
+#### Web usage
 
 Entry html page settings:
 
@@ -104,7 +104,11 @@ And import stylesheets manually:
 import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.less'
 ```
 
-#### Use modularized antd-mobile
+##### Use modularized antd-mobile
+
+**Note: Strongly recommended.**
+
+The following two ways used to load the **only components you used**, select one of the ways you like.
 
 - Use [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) (Recommended)
 
@@ -132,13 +136,13 @@ import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.
    // import 'antd-mobile/lib/date-picker/style';         // that will import less
    ```
 
-#### More enhanced (optional):
+##### More enhanced (optional):
 
 > [Custom theme](https://github.com/ant-design/ant-design-mobile/blob/master/docs/react/theme-config.en-US.md).
 > Your custom UI library based on antd-mobile: [web-custom-ui](https://github.com/ant-design/antd-mobile-samples/tree/master/web-custom-ui) / [web-custom-ui-pro](https://github.com/ant-design/antd-mobile-samples/tree/master/web-custom-ui-pro)
 
 
-### React-Native usage
+#### React-Native usage
 
 > Note: `Menu`/`NavBar`/`Range` does not have React-Native implementation.
 
@@ -147,7 +151,7 @@ Example of usage:
 ```jsx
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import { Button } from 'antd-mobile';
+import Button from 'antd-mobile/lib/button';
 
 class HelloWorldApp extends Component {
   render() {
@@ -158,13 +162,11 @@ class HelloWorldApp extends Component {
 AppRegistry.registerComponent('HelloWorldApp', () => HelloWorldApp);
 ```
 
-#### Use modularized antd-mobile
+##### Use modularized antd-mobile
+
+The following two ways used to load the **only components you used**, select one of the ways you like.
 
 - Use [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) (Recommended)
-
-   ```bash
-   yarn add babel-plugin-import --dev
-   ```
 
    ```js
    // .babelrc or babel-loader option
@@ -175,19 +177,19 @@ AppRegistry.registerComponent('HelloWorldApp', () => HelloWorldApp);
    }
    ```
 
-   This allows you to import components from antd-mobile without having to manually import the corresponding stylesheet. The babel plugin will automatically import stylesheets.
+   Then just change the way of import modules from antd-mobile.
 
    ```jsx
-   import { DatePicker } from 'antd-mobile';
+   import { Button } from 'antd-mobile';
    ```
 
 - Manually import
 
    ```jsx
-   import DatePicker from 'antd-mobile/lib/date-picker';  // for js
+   import Button from 'antd-mobile/lib/button';
    ```
 
-#### More enhanced (optional):
+##### More enhanced (optional):
 
 > [Custom theme and single component style](https://github.com/ant-design/antd-mobile-samples/tree/master/rn-custom-ui)
 

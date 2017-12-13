@@ -5,6 +5,7 @@ const _indexDemos = ['drawer'];
 const _subListDemos = ['list-view'];
 
 const pluginAntdConfig = {
+  pxtorem: process.env.HD_ENV === 'hd',
   babelConfig: JSON.stringify({
     plugins: [
       [
@@ -14,6 +15,8 @@ const pluginAntdConfig = {
           libraryDirectory: 'components',
         },
       ],
+      require.resolve('babel-plugin-transform-class-properties'),
+      require.resolve('babel-plugin-transform-object-rest-spread'),
     ],
   }),
 };
@@ -59,6 +62,7 @@ module.exports = {
     },
   },
   plugins: [
+    'bisheng-plugin-description',
     `bisheng-plugin-antd?${JSON.stringify(pluginAntdConfig)}`,
     'bisheng-plugin-react?lang=__react',
   ],

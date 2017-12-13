@@ -7,7 +7,7 @@ Here list some of main incompatible changes and recommended changes in the upgra
 
 ## 1.x => 2.0
 
-### 2.x Breaking changes
+2.x Breaking changes upgrade sample [antd-mobile-samples / web-1.x-2.0](https://github.com/ant-design/antd-mobile-samples/tree/master/web-1.x-2.0)
 
 #### HD program
 
@@ -17,18 +17,18 @@ How to upgrade?
 
 1. make sure add a `data-scale` attibute in your `html` tag, eg: `<html data-scale="true"></html>`, or you can do it through js, eg: `document.documentElement.setAttribute('data-scale', true);`.
 
-2.Follow [Customize Theme Doc](https://beta.mobile.ant.design/docs/react/customize-theme)  to modify antd-mobile theme variable `@hd` to be `@hd: '2px'`.
+2.Follow [Customize Theme Doc](https://mobile.ant.design/docs/react/customize-theme) to modify antd-mobile theme variable `@hd` to be `2px`.
 
-#### svg icon
+#### Icon
 
 How to upgrade, depend on which case you use:
 
-1. If you previously only use antd-mobile built-in Icon like this： `<Icon type="loading" />`, no need to do any change.
-2. If you previously use your local svg file to do custom Icon like this way： `<Icon type={require('../foo.svg')} />`. Suggest you follow below solution:
+1. If you previously only use antd-mobile built-in Icon like this：`<Icon type="loading" />`, no need to do any change.
+2. If you previously use your local svg file to do custom Icon like this way：`<Icon type={require('../foo.svg')} />`. Suggest you follow below solution:
 
 ```diff
 - import { Icon } from 'antd-mobile';
-- <Icon type={require('./foo.svg)'} />
+- <Icon type={require('./foo.svg')} />
 
 + const CustomIcon = ({ type, className = '', size = 'md', ...restProps }) => (
 +     <svg
@@ -36,10 +36,10 @@ How to upgrade, depend on which case you use:
 +       {...restProps}
 +     >
 +       <use xlinkHref={type} /> {/* svg-sprite-loader@0.3.x */}
-+       {/* <use xlinkHref={#${type.default.id}} /> */} {/* svg-sprite-loader@lastest */}
++       {/* <use xlinkHref={#${type.default.id}} /> */} {/* svg-sprite-loader@latest */}
 +     </svg>
 + );
-+ <CustomIcon type={require('./foo.svg)'} />
++ <CustomIcon type={require('./foo.svg')} />
 ```
 
 #### DatePicker
@@ -103,6 +103,19 @@ const tabs = [
 </Tabs>
 ```
 
+#### TabBar
+The `Bar`'s style of TabBar is no longer use `fixed`, `TabBar`'s height, position is determined by wrapper，improve layout flexibility.
+
+easy to upgrade:
+
+```jsx
+<div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+  <TabBar>...</TabBar>
+</div>
+```
+
+(more detail: [TabBar Demo](http://mobile.ant.design/components/tab-bar-cn/))
+
 #### Popup
 
 Since the underlying dependencies and bulk styles of the Popup component are the same as the Modal component, and the API call method of the `Popup.show ()` is difficult to update the data, we removed the Popup component and added `popup` prop to the Modal component to implement the Popup component's functionality.
@@ -125,7 +138,7 @@ Example of implementing Popup using Modal components:
 
 #### ListView & RefreshControl
 
-**Note: they have very big optimization from `beta.6` version**. If you have used the `useZscroller` prop of the `ListView` before, or the `RefreshControl` component. You need to follow new usage.
+**Note: they have very big optimization from `2.0.0-beta.6` version**, `RefreshControl` is removed and needs to be replaced with the new `PullToRefresh` component. If you have used the `useZscroller` prop of the `ListView` before, or the `RefreshControl` component. You need to follow new usage.
 
 Now `useZscroller` `scrollerOptions` `refreshControl` these props no longer work. **Use the web's native scroller instead of zscroller, using the `PullToRefresh` component instead of the `RefreshControl` component**.
 

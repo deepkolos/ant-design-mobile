@@ -173,7 +173,7 @@ export default function prompt(
     if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
       return;
     }
-    const pNode = closest(e.target, `.${prefixCls}-input-container`);
+    const pNode = closest(e.target, `.${prefixCls}-content`);
     if (!pNode) {
       e.preventDefault();
     }
@@ -193,7 +193,7 @@ export default function prompt(
       platform={platform}
       wrapProps={{ onTouchStart: onWrapTouchStart }}
     >
-      <div style={{ zoom: 1, overflow: 'hidden' }}>{content}</div>
+      <div className={`${prefixCls}-propmt-content`}>{content}</div>
     </Modal>, div,
   );
 

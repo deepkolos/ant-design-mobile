@@ -15,9 +15,105 @@ toc: false
 
 ---
 
+### 2.1.1
+
+`2017-12-06`
+
+- **Bug Fix**
+
+  - 🐞  修复 `List` 在 rem 页面下头部间距增大的问题。([#2145](https://github.com/ant-design/ant-design-mobile/pull/2145))
+  - 🐞  修复 `body.fontSize` 为 `@font-sizep-base` 14px。 ([8973a0f](https://github.com/ant-design/ant-design-mobile/commit/8973a0f890e776a47743188b14356bee34b68ad6))
+  - 🐞  修复 `Button` 在 iOS 11 下需要滑动才显示的问题。 ([6b571bef](https://github.com/ant-design/ant-design-mobile/commit/6b571bef0d714e8fdb7c4434ee1ab280be9952fd))
+
+
+### 2.1.0
+
+`2017-12-03`
+
+- **Feature**
+
+  - 🌟 [React Native] `Steps` 支持 `horizontal` 垂直方向。([#2090](https://github.com/ant-design/ant-design-mobile/pull/2090))
+  - 🌟 `ImagePicker` 支持多选。([#2017](https://github.com/ant-design/ant-design-mobile/issues/2017))
+  - 🇸🇪  `LocaleProvider` 添加 瑞典语 支持。([#2132](https://github.com/ant-design/ant-design-mobile/pull/2132))
+
+- **Bug Fix**
+
+  - 🐞  修复 `[InputItem type="money"]` 虚拟数字键盘遮挡页面内容的问题。([#1893](https://github.com/ant-design/ant-design-mobile/issues/1893))
+  - 🐞  修复 `[InputItem type="money"]` 单页面多实例未复用的问题。 ([#2065](https://github.com/ant-design/ant-design-mobile/issues/2065))
+  - 🐞  修复 `Menu` props.data 数据为空时的报错。 ([#2079](https://github.com/ant-design/ant-design-mobile/pull/2079))
+  - 🐞  修复 `Menu` 组件的按钮样式丢失问题。 ([#2097](https://github.com/ant-design/ant-design-mobile/issues/2097))
+  - 🐞  修复 `InputItem`, `Drawer` tsd. ([#2100](https://github.com/ant-design/ant-design-mobile/issues/2100), [#2138](https://github.com/ant-design/ant-design-mobile/issues/2138))
+  - 🐞  修复 `Picker` 级联的时候数据不准确的问题 ([59a66c](https://github.com/ant-design/ant-design-mobile/commit/59a66cfbe0daef8c9f080d0387bc880e54632fe0))
+  - 🐞  修复 `TabBar` 显示隐藏的动画。 ([#2072](https://github.com/ant-design/ant-design-mobile/issues/2072))
+  - 🐞  修复 `Textarea` autoHeight 在初始时不生效的问题。([#2118](https://github.com/ant-design/ant-design-mobile/issues/2118))
+  - 🐞  修复 React Native `Flex` 在无事件监听时不添加触摸反馈。 ([#2095](https://github.com/ant-design/ant-design-mobile/pull/2095))
+  - 🐞  修复 `Toast` 被点击后不会自动隐藏的问题。 ([#2103](https://github.com/ant-design/ant-design-mobile/issues/2103))
+  - 🐞  修复 `Textarea` 非受控下 clear 无效的问题。([#2131](https://github.com/ant-design/ant-design-mobile/issues/2131))
+  - 🐞 修复 `TabBar` sticky 效果。([#2136](https://github.com/ant-design/ant-design-mobile/issues/2136))
+
+- **Theme**
+
+  - 🗑 删除了全局默认的 body font-size 设置。([#2106](https://github.com/ant-design/ant-design-mobile/pull/2106))
+  - 🆕 `brand-primary-tap` 改为 `0e80d2`。 ([#2115](https://github.com/ant-design/ant-design-mobile/pull/2115))
+
+
+
+### 2.0.3
+
+`2017-11-11`
+
+- **Bug Fix**
+
+ - Fix: InputItem 在 react@16 下 unmount 时报错；([#2040](https://github.com/ant-design/ant-design-mobile/issues/2040))
+ - Fix: InputItem unmount 时 onBlur 不触发；
+ - Fix: ListItem RN 内容布局中问题；([#2052](https://github.com/ant-design/ant-design-mobile/issues/2052))
+ - Fix: SwipeAction 在 iOS8 下无效; ([#2063](https://github.com/ant-design/ant-design-mobile/issues/2063))
+ - Fix: Stepper 当最小值为 0  时，按钮不 disabled；([#2062](https://github.com/ant-design/ant-design-mobile/issues/2062))
+
+- **Feature**
+
+  - Grid RN 增加 itemStyle 属性，可以定制样式；([#2046](https://github.com/ant-design/ant-design-mobile/pull/2046))
+  - TabBar(web) 增加 `noRenderContent` 以支持 不渲染内容部分;
+
+- **Enhancement**
+
+  - 1.x 站点 open in codepen 失败修复；([#2032](https://github.com/ant-design/ant-design-mobile/issues/2032))
+
+### 2.0.2
+
+`2017-11-04`
+
+- **Bug Fix**
+
+  - Fix：使用了（含） `List.Item` 的组件绑定 onTouch 事件不生效；
+  - Fix: Tabs z-index 值太高引起遮挡问题; ([#2014](https://github.com/ant-design/ant-design-mobile/issues/2014))
+  - Fix: Picker onOk 触发问题；([#2042](https://github.com/ant-design/ant-design-mobile/issues/2042))
+
+- **Enhancement**
+
+  - RN stepper 默认输入框使用数字键盘；
+
+### 2.0.1
+
+`2017-10-28`
+
+- **Bug Fix**
+
+  - Fix `Modal` android 下按钮事件触发多次 ([#1975](https://github.com/ant-design/ant-design-mobile/issues/1975)).
+  - Fix: `Accordion` 在 RN > 0.49 下 crash ([#1969](https://github.com/ant-design/ant-design-mobile/pull/1969))
+  - Fix: `Toast` 在 componentDidMount 下不显示和 react@16 不兼容 ([#1980](https://github.com/ant-design/ant-design-mobile/issues/1980))
+  - Fix: `Modal.alert/prompt` 按钮 iOS 下关闭失效；([#1976](https://github.com/ant-design/ant-design-mobile/issues/1976))
+  - Fix: `Modal` RN 下 promise 失效;
+  - Fix: `Picker/DatePicker` 不能设置 `okText/dismissText/extra`； ([#1984](https://github.com/ant-design/ant-design-mobile/issues/1984))
+  - Fix: `Picker` RN 国际化失效；([#2001](https://github.com/ant-design/ant-design-mobile/issues/2001))
+  - Fix: `SearchBar` clear icon 遮盖 input 输入内容；([#2010](https://github.com/ant-design/ant-design-mobile/issues/2010))
+  - Fix: `SearchBar` clear 不能 focus；
+  - Fix: `TextareaItem` autoHeight 在 RN@49 下 crash; ([#1970](https://github.com/ant-design/ant-design-mobile/issues/1970))
+
+
 ### 2.0.0
 
-`2017-xx-xx`
+`2017-10-20`
 
 - **Feature**
 
@@ -82,6 +178,11 @@ toc: false
   - 不再需要配置 `webpack.resolve`
   - `rmc-picker` 升级，简化 picker 相关的 dom 结构。（[#1593](https://github.com/ant-design/ant-design-mobile/issues/1593)）
   - 去除全局的 `user-select: none`。[#1793](https://github.com/ant-design/ant-design-mobile/issues/1793)
+
+## 1.7.1
+`2017-10-20`
+
+- Fix `InputItem`/`TextareaItem` 删除按钮不显示问题. ([#1955](https://github.com/ant-design/ant-design-mobile/issues/1955))
 
 ## 1.7.0
 `2017-10-13`

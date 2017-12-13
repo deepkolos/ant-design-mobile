@@ -50,7 +50,6 @@ class InputItem extends React.Component<InputItemProps, any> {
 
   inputRef: any;
   private debounceTimeout: any;
-  private scrollIntoViewTimeout: any;
 
   constructor(props) {
     super(props);
@@ -77,10 +76,6 @@ class InputItem extends React.Component<InputItemProps, any> {
     if (this.debounceTimeout) {
       clearTimeout(this.debounceTimeout);
       this.debounceTimeout = null;
-    }
-    if (this.scrollIntoViewTimeout) {
-      clearTimeout(this.scrollIntoViewTimeout);
-      this.scrollIntoViewTimeout = null;
     }
   }
 
@@ -113,6 +108,8 @@ class InputItem extends React.Component<InputItemProps, any> {
     }
     if (!('value' in this.props)) {
       this.setState({ value });
+    } else {
+      this.setState({ value: this.props.value });
     }
     if (onChange) {
       onChange(value);
@@ -127,26 +124,21 @@ class InputItem extends React.Component<InputItemProps, any> {
     this.setState({
       focus: true,
     });
-    if (document.activeElement.tagName.toLowerCase() === 'input') {
-      this.scrollIntoViewTimeout = setTimeout(() => {
-        try {
-          (document.activeElement as any).scrollIntoViewIfNeeded();
-        } catch (e) { }
-      }, 100);
-    }
     if (this.props.onFocus) {
       this.props.onFocus(value);
     }
   }
 
   onInputBlur = (value) => {
-    this.debounceTimeout = setTimeout(() => {
-      if (document.activeElement !== this.inputRef.inputRef) {
-        this.setState({
-          focus: false,
-        });
-      }
-    }, 200);
+    if (this.inputRef) { // this.inputRef may be null if customKeyboard unmount
+      this.debounceTimeout = setTimeout(() => {
+        if (document.activeElement !== this.inputRef.inputRef) {
+          this.setState({
+            focus: false,
+          });
+        }
+      }, 200);
+    }
     if (this.props.onBlur) {
       this.props.onBlur(value);
     }

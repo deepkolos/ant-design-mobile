@@ -2,19 +2,6 @@
 
 exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
 <View
-  accessibilityComponentType={undefined}
-  accessibilityLabel={undefined}
-  accessibilityTraits={undefined}
-  accessible={true}
-  hitSlop={undefined}
-  nativeID={undefined}
-  onLayout={undefined}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
   style={
     Array [
       Object {
@@ -26,22 +13,8 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       undefined,
     ]
   }
-  testID={undefined}
 >
   <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    hitSlop={undefined}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
@@ -61,7 +34,6 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         ],
       ]
     }
-    testID={undefined}
   >
     <View
       accessibilityComponentType={undefined}
@@ -71,6 +43,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -93,6 +66,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -106,6 +80,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -168,6 +143,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -190,6 +166,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -203,6 +180,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -265,6 +243,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -287,6 +266,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -300,6 +280,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -356,19 +337,6 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
     </View>
   </View>
   <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    hitSlop={undefined}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
@@ -388,7 +356,6 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         ],
       ]
     }
-    testID={undefined}
   >
     <View
       accessibilityComponentType={undefined}
@@ -398,6 +365,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -420,6 +388,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -433,6 +402,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -495,6 +465,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -517,6 +488,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -530,6 +502,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -592,6 +565,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -614,6 +588,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -627,6 +602,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -683,19 +659,6 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
     </View>
   </View>
   <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    hitSlop={undefined}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
@@ -715,7 +678,6 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         ],
       ]
     }
-    testID={undefined}
   >
     <View
       accessibilityComponentType={undefined}
@@ -725,6 +687,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -747,6 +710,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -760,6 +724,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -822,6 +787,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -844,6 +810,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -857,6 +824,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -919,6 +887,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -941,6 +910,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -954,6 +924,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1010,19 +981,6 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
     </View>
   </View>
   <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    hitSlop={undefined}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Array [
         Object {
@@ -1042,7 +1000,6 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         ],
       ]
     }
-    testID={undefined}
   >
     <View
       accessibilityComponentType={undefined}
@@ -1052,6 +1009,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -1074,6 +1032,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -1087,6 +1046,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1149,6 +1109,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -1171,6 +1132,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -1184,6 +1146,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}
@@ -1246,6 +1209,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
       hitSlop={undefined}
       nativeID={undefined}
       onLayout={undefined}
+      onPress={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
       onResponderRelease={[Function]}
@@ -1268,6 +1232,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
             Object {
               "borderLeftWidth": 0,
             },
+            Object {},
           ],
         ]
       }
@@ -1281,6 +1246,7 @@ exports[`renders ./components/icon/demo/basic.native.tsx correctly 1`] = `
         hitSlop={undefined}
         nativeID={undefined}
         onLayout={undefined}
+        onPress={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
         onResponderRelease={[Function]}

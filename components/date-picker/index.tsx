@@ -1,3 +1,4 @@
+/* tslint:disable:jsx-no-multiline-js */
 import React from 'react';
 import PropTypes from 'prop-types';
 import PopupDatePicker from 'rmc-date-picker/lib/Popup';
@@ -74,6 +75,19 @@ export default class DatePicker extends React.Component<PropsType, any> {
       />
     );
 
+    /**
+     * 注意:
+     * 受控 表示 通过设置 value 属性、组件的最终状态跟 value 设置值一致。
+     * 默认不设置 value 或 只设置 defaultValue 表示非受控。
+     *
+     * DatePickerView 对外通过 value “只支持 受控” 模式（可以使用 defaultDate 支持 非受控 模式，但不对外）
+     * PickerView 对外通过 value “只支持 受控” 模式
+     *
+     * DatePicker / Picker 对外只有 value 属性 (没有 defaultValue)，
+     * 其中 List 展示部分 “只支持 受控” 模式，弹出的 选择器部分 “只支持 非受控” 模式
+     *
+     */
+
     return (
       <PopupDatePicker
         datePicker={dataPicker}
@@ -83,11 +97,16 @@ export default class DatePicker extends React.Component<PropsType, any> {
         {...props}
         prefixCls={popupPrefixCls}
         date={value}
-        dismissText={dismissText}
-        okText={okText}
+        dismissText={this.props.dismissText || dismissText}
+        okText={this.props.okText || okText}
         ref={this.fixOnOk}
       >
-        {children && React.cloneElement(children, { extra: value ? formatFn(this, value) : extra })}
+        {
+          children && React.cloneElement(
+            children,
+            { extra: value ? formatFn(this, value) : (this.props.extra || extra) },
+          )
+        }
       </PopupDatePicker>
     );
   }

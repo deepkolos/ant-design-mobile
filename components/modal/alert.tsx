@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
+import closest from '../_util/closest';
 import { Action } from './PropsType';
 
 export default function alert(
@@ -38,11 +39,16 @@ export default function alert(
     return button;
   });
 
+  const prefixCls = 'am-modal';
+
   function onWrapTouchStart(e) {
     if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
       return;
     }
-    e.preventDefault();
+    const pNode = closest(e.target, `.${prefixCls}-footer`);
+    if (!pNode) {
+      e.preventDefault();
+    }
   }
 
   ReactDOM.render(
@@ -58,7 +64,7 @@ export default function alert(
       platform={platform}
       wrapProps={{ onTouchStart: onWrapTouchStart }}
     >
-      <div style={{ zoom: 1, overflow: 'hidden' }}>{message}</div>
+      <div className={`${prefixCls}-alert-content`}>{message}</div>
     </Modal>, div,
   );
 

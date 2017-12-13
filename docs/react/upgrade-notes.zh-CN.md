@@ -7,10 +7,7 @@ title: 升级指南
 
 ## 1.x => 2.0
 
-### 2.0 不兼容改动
-
-> 建议从 1.x 升级时，直接升级到 2.x 的最新版本。
-> 建议在升级 antd 的过程中，每做完一次合理的修改并 review 和测试之后，就 git commit 一次，这样在误操作时能随时回滚到之前的版本
+2.0 不兼容改动，升级实例 [antd-mobile-samples / web-1.x-2.0](https://github.com/ant-design/antd-mobile-samples/tree/master/web-1.x-2.0)
 
 #### 高清方案
 
@@ -18,23 +15,22 @@ title: 升级指南
 
 如何升级？
 
-1. 确保在页面的 html 标签上tinJIe `data-scale` 属性， 如 `<html data-scale="true"></html>`, 或者通过脚本动态添加 `document.documentElement.setAttribute('data-scale', true);`。
+1. 确保在页面的 html 标签上添加 `data-scale` 属性， 如 `<html data-scale="true"></html>`, 或者通过脚本动态添加 `document.documentElement.setAttribute('data-scale', true);`。
 
-2. 参照 [自定义主题文档](https://beta.mobile.ant.design/docs/react/customize-theme-cn)  将 antd-mobile 提供的主题变量 `@hd` 赋值为 `@hd: '2px'`。
+2. 参照 [自定义主题文档](https://mobile.ant.design/docs/react/customize-theme-cn) 将 antd-mobile 提供的主题变量 `@hd` 赋值为 `2px`。
 
 
 #### Icon
 
 如何升级，分如下两种情况？
 
-
 1. 对于 `<Icon type="loading" />` 此类使用 antd-mobile 内置 Icon 的场景，无需任何修改。
 
-2. 对于 `<Icon type={require('../foo.svg')} />` 此类使用本地 svg 文件的场景，建议用保留 svg-sprite-loader 相关配置不变，然后使用自定义的 `CustomIcon` 组件替换 antd-mobile `Icon`，示例如下：
+2. 对于 `<Icon type={require('../foo.svg')} />` 此类使用本地 svg 文件的场景，可以保留原 svg-sprite-loader 相关配置不变，然后使用自定义的 `CustomIcon` 组件替换 antd-mobile `Icon`，示例如下：
 
 ```diff
 - import { Icon } from 'antd-mobile';
-- <Icon type={require('./foo.svg)'} />
+- <Icon type={require('./foo.svg')} />
 
 + const CustomIcon = ({ type, className = '', size = 'md', ...restProps }) => (
 +     <svg
@@ -42,10 +38,10 @@ title: 升级指南
 +       {...restProps}
 +     >
 +       <use xlinkHref={type} /> {/* svg-sprite-loader@0.3.x */}
-+       {/* <use xlinkHref={#${type.default.id}} /> */} {/* svg-sprite-loader@lastest */}
++       {/* <use xlinkHref={#${type.default.id}} /> */} {/* svg-sprite-loader@latest */}
 +     </svg>
 + );
-+ <CustomIcon type={require('./foo.svg)'} />
++ <CustomIcon type={require('./foo.svg')} />
 ```
 
 #### DatePicker
@@ -109,6 +105,17 @@ const tabs = [
 </Tabs>
 ```
 
+#### TabBar
+底部Bar将不再使用 `fixed` 样式，整个 `TabBar` 的高度、位置将由外层决定，提高布局灵活性。
+
+简单的升级方案：
+在TabBar外层包裹一个div，可参见 [TabBar Demo](http://mobile.ant.design/components/tab-bar-cn/)。
+```jsx
+<div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+  <TabBar>...</TabBar>
+</div>
+```
+
 #### Popup
 
 由于 Popup 组件的底层依赖和大量样式都与 Modal 组件相同，并且 `Popup.show()` 的 API 调用方法在数据更新时遇到困难，因此我们删除了 Popup 组件，并且在 Modal 组件上增加 `popup` 属性、来实现 Popup 组件的功能。
@@ -131,7 +138,7 @@ const tabs = [
 
 #### ListView & RefreshControl
 
-**注意: 从 `beta.6` 版本开始，他们有很大的优化**，如果你之前有使用 ListView 的 `useZscroller` 属性、或者 `RefreshControl` 组件，你需要按新的用法来升级。
+**注意: 从 `2.0.0-beta.6` 版本开始，他们有很大的优化**，`RefreshControl` 被移除，需要使用新增的 `PullToRefresh` 组件代替。如果你之前有使用 ListView 的 `useZscroller` 属性、或者 `RefreshControl` 组件，你需要按新的用法来升级。
 
 现在 `useZscroller` `scrollerOptions` `refreshControl` 这些属性不再起作用。**使用 web 的原生 scroller 来代替 zscroller，使用 `PullToRefresh` 组件来代替 `RefreshControl` 组件**。
 
@@ -142,13 +149,20 @@ const tabs = [
   + import { ListView, PullToRefresh } from 'antd-mobile';
   <ListView
      dataSource={this.state.dataSource}
-  -  refreshControl={<RefreshControl
-  +  pullToRefresh={<PullToRefresh
-       refreshing={this.state.refreshing}
-       onRefresh={this.onRefresh}
-  -    icon={this.renderCustomIcon()}
-  +    indicator={{ deactivate: '下拉' }}
-     />}
+  -  refreshControl={
+  -    <RefreshControl
+  -      refreshing={this.state.refreshing}
+  -      onRefresh={this.onRefresh}
+  -      icon={this.renderCustomIcon()}
+  -    />
+  -  }
+  +  pullToRefresh={
+  +    <PullToRefresh
+  +      refreshing={this.state.refreshing}
+  +      onRefresh={this.onRefresh}
+  +      indicator={{ deactivate: '下拉' }}
+  +    />
+  +  }
   />
   ```
 
@@ -161,9 +175,9 @@ const tabs = [
 - 各个组件的 `ref` 从 `string` 修改为 `function` (比如 `input` 组件 `this.refs.input` => `this.input`)
 - 部分 Web 版本组件原来会根据 UA 对 iOS 或 Android 平台应用不同的样式，现在修改为默认应用 iOS 平台样式。
 - `Button` / `InputItem` / `TextareaItem` / `Progress` / `List`/ `Result`/ `Switch` / `Slider` / `Flex` / `pagination` / `ActionSheet` 等组件的 细节样式 或 API 都有部分微调。
-- `ListView` 的 sticky 特性从“内置”改为“外置”。
+- `ListView` 的 sticky 特性从内置改为外置。
 
-更细节的信息，请查看 change logs
+更细节的信息，请查看 [changelog](/changelog)。
 
 
 ## 0.9.x => 1.0

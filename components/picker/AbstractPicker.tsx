@@ -25,9 +25,6 @@ export function getDefaultProps() {
     format: defaultFormat,
     cols: 3,
     cascade: true,
-    extra: '请选择',
-    okText: '确定',
-    dismissText: '取消',
     title: '',
   };
 }
@@ -92,9 +89,21 @@ export default abstract class AbstractPicker extends React.Component<PickerProps
     this.scrollValue = v;
   }
 
+  setCasecadeScrollValue = (v: any) => {
+    // 级联情况下保证数据正确性，滚动过程中只有当最后一级变化时才变更数据
+    if (v && this.scrollValue) {
+      const length = this.scrollValue.length;
+      if (length === v.length && this.scrollValue[length - 1] === v[length - 1]) {
+        return;
+      }
+    }
+    this.setScrollValue(v);
+  }
+
   fixOnOk = (cascader: any) => {
-    if (cascader) {
+    if (cascader && cascader.onOk !== this.onOk) {
       cascader.onOk = this.onOk;
+      cascader.forceUpdate();
     }
   }
 
@@ -107,13 +116,11 @@ export default abstract class AbstractPicker extends React.Component<PickerProps
 
   render() {
     const {
-      children, value = [], popupPrefixCls, itemStyle, indicatorStyle,
-      cascade, prefixCls, pickerPrefixCls, data, cols, onOk, ...restProps,
+      children, value = [], popupPrefixCls, itemStyle, indicatorStyle, okText, dismissText,
+      extra, cascade, prefixCls, pickerPrefixCls, data, cols, onOk, ...restProps,
     } = this.props;
 
     const _locale = getComponentLocale(this.props, this.context, 'Picker', () => require('./locale/zh_CN'));
-
-    const { okText, dismissText, extra } = _locale;
 
     let cascader;
     let popupMoreProps = {};
@@ -125,7 +132,7 @@ export default abstract class AbstractPicker extends React.Component<PickerProps
           data={data}
           cols={cols}
           onChange={this.onPickerChange}
-          onScrollChange={this.setScrollValue}
+          onScrollChange={this.setCasecadeScrollValue}
           pickerItemStyle={itemStyle}
           indicatorStyle={indicatorStyle}
         />
@@ -152,12 +159,12 @@ export default abstract class AbstractPicker extends React.Component<PickerProps
         {...restProps}
         prefixCls={popupPrefixCls}
         value={value}
-        dismissText={dismissText}
-        okText={okText}
+        dismissText={dismissText || _locale.dismissText}
+        okText={okText || _locale.okText}
         {...popupMoreProps}
         ref={this.fixOnOk}
       >
-        {children && React.cloneElement(children, { extra: this.getSel() || extra })}
+        {children && React.cloneElement(children, { extra: this.getSel() || extra || _locale.extra })}
       </RMCPopupCascader>
     );
   }

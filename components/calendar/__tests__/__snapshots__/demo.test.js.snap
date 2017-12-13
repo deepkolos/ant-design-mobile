@@ -200,7 +200,7 @@ exports[`renders ./components/calendar/demo/basic.md correctly 1`] = `
           <div
             class="am-list-content"
           >
-            不使用ZScroller(无法向前滚动)
+            不无限滚动
           </div>
           <div
             aria-hidden="true"
@@ -222,6 +222,48 @@ exports[`renders ./components/calendar/demo/basic.md correctly 1`] = `
             class="am-list-content"
           >
             水平进入
+          </div>
+          <div
+            aria-hidden="true"
+            class="am-list-arrow am-list-arrow-horizontal"
+          />
+        </div>
+        <div
+          class="am-list-ripple"
+          style="display:none"
+        />
+      </div>
+      <div
+        class="am-list-item am-list-item-middle"
+      >
+        <div
+          class="am-list-line"
+        >
+          <div
+            class="am-list-content"
+          >
+            默认选择范围
+          </div>
+          <div
+            aria-hidden="true"
+            class="am-list-arrow am-list-arrow-horizontal"
+          />
+        </div>
+        <div
+          class="am-list-ripple"
+          style="display:none"
+        />
+      </div>
+      <div
+        class="am-list-item am-list-item-middle"
+      >
+        <div
+          class="am-list-line"
+        >
+          <div
+            class="am-list-content"
+          >
+            onSelect API
           </div>
           <div
             aria-hidden="true"

@@ -16,6 +16,8 @@ export interface TabBarProps {
   swipeable?: boolean;
   /** rn android only**/
   styles?: any;
+  /*web only*/
+  noRenderContent?: boolean;
 }
 
 export interface TabBarItemProps {
@@ -27,4 +29,8 @@ export interface TabBarItemProps {
   title: string;
   /*web only*/
   dot?: boolean;
+  /*web only*/
+  prefixCls?: string;
+  /*web only*/
+  style?: any;
 }
